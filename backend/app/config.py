@@ -1,6 +1,6 @@
 from pydantic_settings import BaseSettings
 
-class settings(BaseSettings):
+class Settings(BaseSettings):
 
     db_user: str
     db_password: str
@@ -22,4 +22,4 @@ class settings(BaseSettings):
     def DATABASE_URL(self) -> str:
         return f"mysql+pymysql://{self.db_user}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_name}"
     
-    settings = settings()
+settings = Settings()
