@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
 from app.config import settings
+from app.routes import api_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -20,9 +21,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(api_router)
+
 @app.get("/")
 def read_root():
-    return {"message": "Bienvenido a Presente+ API"}
+    return {"message": "Bienvenido a Presente+ API", "version": "1.0.0"}
 
 @app.get("/health")
 def health_check():
