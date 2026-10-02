@@ -6,14 +6,14 @@ from app.database import Base
 participante_grupo = Table(
     "participante_grupo",
     Base.metadata,
-    Column("participante_id", Integer, ForeignKey("participante.id"), primary_key=True),
-    Column("grupo_id", Integer, ForeignKey("grupo.id"), primary_key=True),
+    Column("participante_id", Integer, ForeignKey("participantes.id"), primary_key=True),
+    Column("grupo_id", Integer, ForeignKey("grupos.id"), primary_key=True),
 )
 educador_grupo = Table(
     "educador_grupo",
     Base.metadata,
-    Column("usuario_id", Integer, ForeignKey("usuario.id"), primary_key=True),
-    Column("grupo_id", Integer, ForeignKey("grupo.id"), primary_key=True),
+    Column("usuarios_id", Integer, ForeignKey("usuarios.id"), primary_key=True),
+    Column("grupo_id", Integer, ForeignKey("grupos.id"), primary_key=True),
 )
 
 class Grupo(Base):
@@ -27,6 +27,7 @@ class Grupo(Base):
     dias = Column(String(100))
     horario = Column(String(50))
     cupo_maximo = Column(Integer, default=30)
+    estado = Column(String(50), default="Activo") 
 
     creado_en = Column(DateTime, default=datetime.utcnow)
     actualizado_en = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

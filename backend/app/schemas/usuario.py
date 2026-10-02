@@ -11,7 +11,7 @@ class UsuarioCreate(UsuarioBase):
     password: str
     rol_id: int
 
-class UssuarioLogin(BaseModel):
+class UsuarioLogin(BaseModel):
     email: EmailStr
     password: str
 

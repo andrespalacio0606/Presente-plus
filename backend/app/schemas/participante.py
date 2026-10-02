@@ -14,8 +14,8 @@ class ParticipanteBase(BaseModel):
     fecha_nacimiento: Optional[str] = [None]
     domicilio: Optional[str] = [None]
     telefono: Optional[str] = [None]
-    estado = str = "activo"
-
+    estado: str = "activo"
+    
 class ParticipanteCreate(ParticipanteBase):
     usuario_id: int
     tutor: Optional[list[TutorCreate]] = None

@@ -1,13 +1,13 @@
-from sqlalchemy import Column, Interger, String, Date, DateTime, Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String, Date, DateTime, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from app.database import Base
 
 class Participante(Base):
-    __tablename__ = "participantes"
+    __tablename__ = "participante"
 
-    id = Column(Interger, primary_key=True, index=True)
-    nombre = Column(Interger, ForeignKey("usuarios.id"), nullable=False)
+    id = Column(Integer, primary_key=True, index=True)
+    nombre = Column(Integer, ForeignKey("usuarios.id"), nullable=False)
     dni = Column(String(20), unique=True, nullable=False)
     fecha_nacimiento = Column(Date)
     domicilio = Column(String(100))
